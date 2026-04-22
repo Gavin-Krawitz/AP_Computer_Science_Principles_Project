@@ -1,0 +1,52 @@
+
+import java.net.URLEncoder;
+import java.util.*;
+import java.net.URLEncoder;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+public class UserInput{
+public Scanner userInput=new Scanner(System.in);
+public String urlKey;
+public String searchString;
+public String encodedSearch;
+    public UserInput(){
+
+
+    }
+    public String getURLKey(){
+        System.out.println("Please type in a 11 character sequence to see what Youtube Video you get");
+        System.out.println("This 11 character sequence could be any combination of letters, numbers, hyphens, and underscores");
+        urlKey=userInput.nextLine();
+        while (urlKey.length()!=11) {
+            System.out.println("Please type a sequence that is 11 characters long");
+            urlKey=userInput.nextLine();
+        }
+        return urlKey;
+    }
+    public void printURLKey(String input){
+        System.out.println("Your YouTube URL is https://www.youtube.com/watch?v="+input);
+    }
+    public void printSearchQuery(String input){
+        System.out.println("Your YouTube search query is https://www.youtube.com/results?search_query="+input);
+    }
+
+    public String getYoutubeVideoViaURL(String input){
+        return "https://www.youtube.com/watch?v="+input;
+    }
+
+    public String getSearchQuery() throws UnsupportedEncodingException{
+        System.out.println("Please type in a search query to look up the YouTube video you want");
+        searchString=userInput.nextLine();
+        String encodedSearch = URLEncoder.encode(searchString, "UTF-8");
+        return encodedSearch;
+
+    }
+    public String getSearch(String input){
+        return "https://www.youtube.com/results?search_query="+input;
+    }
+
+
+
+
+
+}
