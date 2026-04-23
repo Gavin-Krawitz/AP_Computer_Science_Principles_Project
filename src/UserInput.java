@@ -44,6 +44,9 @@ public String encodedSearch;
     public String getSearch(String input){
         return "https://www.youtube.com/results?search_query="+input;
     }
+    public String getInput(){
+        return userInput.nextLine();
+    }
 
 
 
