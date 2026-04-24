@@ -47,6 +47,9 @@ public String encodedSearch;
     public String getInput(){
         return userInput.nextLine();
     }
+    public int getIntInput(){
+        return userInput.nextInt();
+    }
 
 
 
