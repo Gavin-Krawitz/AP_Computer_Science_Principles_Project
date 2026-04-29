@@ -8,7 +8,8 @@ public class Main {
             // userInput.printSearchQuery(userInput.getSearch(userInput.getSearchQuery()));
             // Desktop.getDesktop().browse(new URI(userInput.getYoutubeVideoViaURL(userInput.getURLKey())));
             // Desktop.getDesktop().browse(new URI(userInput.getSearch(userInput.getSearchQuery())));
-            playlist.playPlaylist();
+            // playlist.playPlaylist();
+            userInput.getSearch(userInput.getSearchQuery());
 
         
         

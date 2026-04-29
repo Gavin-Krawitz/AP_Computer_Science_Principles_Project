@@ -1,16 +1,32 @@
-
+import org.htmlunit.BrowserVersion;
+import org.htmlunit.FailingHttpStatusCodeException;
+import org.htmlunit.WebClient;
+import org.htmlunit.html.DomElement;
+import org.htmlunit.html.HtmlPage;
 import java.net.URLEncoder;
 import java.util.*;
+
+import javax.swing.text.html.HTML;
+
 import java.net.URLEncoder;
+import java.awt.Desktop;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URI;
 public class UserInput{
 public Scanner userInput=new Scanner(System.in);
+public WebClient webClient = new WebClient(BrowserVersion.CHROME);
 public String urlKey;
 public String searchString;
 public String encodedSearch;
     public UserInput(){
-
+        webClient.getOptions().setUseInsecureSSL(false);
+        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+        webClient.getOptions().setThrowExceptionOnScriptError(false);
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setCssEnabled(false);
 
     }
     public String getURLKey(){
@@ -41,7 +57,13 @@ public String encodedSearch;
         return encodedSearch;
 
     }
-    public String getSearch(String input){
+    public String getSearch(String input) throws FailingHttpStatusCodeException, MalformedURLException, IOException{
+        HtmlPage searchPage = webClient.getPage("https://www.youtube.com/results?search_query="+input);
+        List<DomElement> links = searchPage.getByXPath("i.ytimg.com/vi");
+        for(DomElement link:links){
+            String urlName=link.asNormalizedText();
+            System.out.println(urlName);
+        }
         return "https://www.youtube.com/results?search_query="+input;
     }
     public String getInput(){
